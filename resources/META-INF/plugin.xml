@@ -1,0 +1,47 @@
+<idea-plugin>
+  <id>com.vladsch.gcode.navigator</id>
+  <name>G-Code Navigator</name>
+  <version>0.1</version>
+  <category>Custom Languages</category>
+  <vendor url="http://github.com/vsch" email="vladimir.schneider@gmail.com">Vladimir Schneider</vendor>
+  <depends>com.intellij.modules.lang</depends>
+
+    <description><![CDATA[
+        <div xmlns="http://www.w3.org/1999/html">
+            <h2>G-Code Navigator</h2>
+            <p><strong><a href="http://reprap.org/wiki/G-code"><span style="color:#30A0D8;">G-Code</span></a> language support for IntelliJ
+                platform</strong></p>
+            <p>Goals:</p>
+            <ul>
+                <li>Preview of model represented by G-Code file</li>
+                <li>Analyze G-Code for various parameters such as acceleration, filament feed rate, etc</li>
+                <li>Modify G-Code to improve print quality, speed or both</li>
+                <li>Semi-Automated 3D printer calibration procedures to eliminate guesswork of slicer parameters</li>
+            </ul>
+        </div>
+        ]]>
+    </description>
+
+  <change-notes><![CDATA[
+      Initial Project Creation<br>
+    ]]>
+  </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
