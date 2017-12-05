@@ -204,8 +204,14 @@ behavior is the same. If a perfectly compensated acceleration curve is used it w
 nozzle to behave as a critically damped oscillator, maximizing acceleration and eliminating
 overshoots and oscillations about the direction of motion.
 
-The extruder feed rate should be adjusted to reflect the real nozzle velocity. This will result
-in a more uniform filament deposition and improve the printed results.
+Some people have implemented S-curve acceleration in firmware to improve the smoothness of
+motion at high speeds or proper jerk control (third derivative of position). This should be done
+in the printer firmware but for ease of experimentation this could be done through G-Code and
+once validated, implemented in the printer firmware.
+
+Consistency of extruded plastic has drastic effect on quality of printed results. The extruder
+feed rate should be adjusted to reflect the real nozzle velocity and extrusion behavior. This
+will result in a more uniform filament deposition and improve the printed results.
 
 Although the effort to create the 3D printer model and calibration procedures may be
 significant, it will allow to print at speeds of 100, 120 or even 150 mm/s while maintaining

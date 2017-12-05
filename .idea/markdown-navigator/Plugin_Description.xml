@@ -67,20 +67,6 @@
       <HtmlExportSettings updateOnSave="true" parentDir="$ProjectFileDir$" targetDir="$ProjectFileDir$" cssDir="$ProjectFileDir$/css" scriptDir="$ProjectFileDir$/js" plainHtml="true" imageDir="$ProjectFileDir$/img" copyLinkedImages="false" imageUniquifyType="0" targetExt="" useTargetExt="false" noCssNoScripts="true" linkToExportedHtml="false" exportOnSettingsChange="true" regenerateOnProjectOpen="false" linkFormatType="HTTP_ABSOLUTE" />
       <LinkMapSettings>
         <textMaps>
-          <textMapGroup groupName="Jekyll Permalink" elementType="JEKYLL_FRONT_MATTER" paramText="" textSample="permalink:     pages/test/test.html" fileRefSample="/test/sample/jekyll.md">
-            <textMap>
-              <linkEntry isRegEx="true">
-                <pattern>(?:^|\n)permalink:\s+(?:(?:.*)/)*([^\s]+)\.html(?:\s|$)</pattern>
-                <replaceWith>$1.md</replaceWith>
-              </linkEntry>
-            </textMap>
-            <fileRefMap>
-              <linkEntry isRegEx="true">
-                <pattern>(?:(?:.*)/)*([^/]+)\.md(?:\s|$)</pattern>
-                <replaceWith>$1</replaceWith>
-              </linkEntry>
-            </fileRefMap>
-          </textMapGroup>
           <textMapGroup groupName="Jekyll Link Macro" elementType="LINK_ADDRESS" paramText="" textSample="{{ static_root }}/img/test.png" fileRefSample="/img/picture.png">
             <textMap>
               <linkEntry isRegEx="false">
@@ -118,6 +104,20 @@
               <linkEntry isRegEx="true">
                 <pattern>\.markdown$</pattern>
                 <replaceWith>.html</replaceWith>
+              </linkEntry>
+            </fileRefMap>
+          </textMapGroup>
+          <textMapGroup groupName="Jekyll Permalink" elementType="JEKYLL_FRONT_MATTER" paramText="" textSample="permalink:     pages/test/test.html" fileRefSample="/test/sample/jekyll.md">
+            <textMap>
+              <linkEntry isRegEx="true">
+                <pattern>(?:^|\n)permalink:\s+(?:(?:.*)/)*([^\s]+)\.html(?:\s|$)</pattern>
+                <replaceWith>$1.md</replaceWith>
+              </linkEntry>
+            </textMap>
+            <fileRefMap>
+              <linkEntry isRegEx="true">
+                <pattern>(?:(?:.*)/)*([^/]+)\.md(?:\s|$)</pattern>
+                <replaceWith>$1</replaceWith>
               </linkEntry>
             </fileRefMap>
           </textMapGroup>
