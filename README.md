@@ -264,9 +264,9 @@ Although I do not have a multi-material printer, one complaint everyone points o
 support materials is the high costs of the filament.
 
 One easy cost improvement of 3D multi-material prints is to reduce the use of high cost
-materials by using cheaper filament in areas of the model where actual material is not
+materials by using more expensive filament in areas of the model where actual material is
 significant such as contact areas between supports and part and in areas where there is no
-access to remove the supports?
+access to remove the supports.
 
 Using soluble supports only for the few layers where supports come in contact with the part
 while the rest of the support structure is printed with the cheaper non-soluble filament, will
