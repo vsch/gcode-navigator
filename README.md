@@ -239,9 +239,9 @@ per 3D model basis it would be more efficient to create a calibration table that
 select optimum parameters based on current circumstances.
 
 Once bridging quality can be reliably improved, the next step would allow elimination of some
-support structures completely or significantly since they could be replaced with smaller area
-supports and high quality bridging a few layers before the full support is needed. This too
-would significantly reduce print times for models that require extensive supports.
+support structures completely or significantly reducing them since they could be replaced with
+smaller area supports and high quality bridging a few layers before the full support is needed.
+This too would significantly reduce print times for models that require extensive supports.
 
 #### Improved Arc Bridges
 
