@@ -192,7 +192,7 @@ acceleration low enough to eliminate this overshoot and vibration effectively re
 printer speed to about 40 mm/s, making print times unnecessarily long.
 
 One improvement is to use non-constant acceleration and deceleration to eliminate overshoot and
-accompanying overshoot.
+accompanying oscillation.
 
 If you drive a car then you probably do this automatically when breaking. You don't keep the
 deceleration constant because that would cause excessive breaking distance. Instead you
