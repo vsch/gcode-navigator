@@ -145,7 +145,7 @@ ability to use these settings on dissimilar 3D models.
 
 ### Allow Experimentation
 
-Experimentation with new approaches to solving 3D printing approaches requires creating
+Experimentation with new approaches to solving 3D printing problems requires creating
 customized G-Code files or editing ones created by the slicer.
 
 I have a few ideas which may lead to significant improvements but I cannot try out because I
