@@ -113,7 +113,7 @@ Similarly, the 3D printer needs to have some basic parameters calibrated before 
 the calibration of more minor parameters.
 
 Each calibration procedure should be as short as possible, isolate individual parameters of the
-dynamic printer model as much as possible and allow use of relative visual inspection of the
+dynamic printer model as much as possible and allow use of relative **visual** inspection of the
 results to select the models with the best parameter value.
 
 Each set of calibration procedures it to isolate as much as possible each parameter of the
