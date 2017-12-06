@@ -123,8 +123,8 @@ minutes so that this procedure can be iterated quickly to an optimal parameter v
 
 When a single parameter cannot be accurately represented by a single value then the calibration
 procedure should be performed under various conditions and optimized for a range of another
-parameter on which it depends. The value of this parameter can be interpolated based on current
-printing conditions without needing user intervention.
+parameter on which it depends. Then the value of this parameter during printing can be
+interpolated based on current printing conditions without needing user intervention.
 
 The assisted calibration procedure would go a long way to help optimize the printer results for
 someone with less experience by presenting the user with pictures to help them choose what
