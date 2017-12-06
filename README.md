@@ -99,7 +99,7 @@ mechanism is to reduce print (extruder/hot-end) speed or similarly its accelerat
 ### Assisted Calibration
 
 The calibration should be implemented by producing a set of prints and asking to pick the "best"
-result on some visual criteria. Based on this choice the software should be able to determine a
+result on some **visual** criteria. Based on this choice the software should be able to determine a
 range for some performance parameter and proceed to produce the next set that would allow it to
 determine an improved value for this parameter.
 
