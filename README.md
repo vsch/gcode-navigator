@@ -15,7 +15,8 @@ Goals:
 2. Allow modification of G-Code to allow experimentation with new approaches to improve print
    quality
 3. Analyze G-Code for various parameters such as acceleration, filament feed rate, etc
-4. Semi-Automated 3D printer calibration procedures to eliminate guesswork of printing parameters
+4. Semi-Automated 3D printer calibration procedures to eliminate guesswork of printing
+   parameters
 5. Preview of "actual" printed result based on calibrated values, including actual: extrusion
    width, layer sagging (bridged), layer height.
 6. Generate optimized G-Code based on a calibrated printer model and improved printing methods.
@@ -26,10 +27,10 @@ The goal is to have a complete G-Code experimentation workbench which is OS inde
 project based multi-file environment.
 
 JetBrains OpenAPI was chosen because:
- 
-1. It offers a project oriented platform with rich version control, editing features, multi-file java
-   environment with great multi-OS implementation.
-2. Is available in a free, open source version 
+
+1. It offers a project oriented platform with rich version control, editing features, multi-file
+   java environment with great multi-OS implementation.
+2. Is available in a free, open source version
 3. I am familiar with it and don't want to spend time on java OS specific idiosyncrasies.
 
 Implementation will proceed by creating a usable plugin as fast as possible, followed by
@@ -42,7 +43,7 @@ I got a TEVO Little Monster 3D printer (a delta printer) and got hooked on 3D pr
 same time I have a very high degree of frustration with the amount of "tweaking" and manual
 intervention required to the slicer settings for each individual model. The amount of re-prints
 due to "operator" forgetfulness or error is also high since the slicer offers a ton of settings
-without much "intelligence" of varying these settings automatically. 
+without much "intelligence" of varying these settings automatically.
 
 Effectively, each 3D model needs to be tweaked for its optimum print parameters for each type of
 filament that is used.
@@ -61,14 +62,14 @@ parameters that poorly model behavior of the actual printing process. Hence thei
 intuitiveness and difficulty of optimization except for a very narrow range of printer
 capabilities.
 
-Sometimes, at higher speeds or layer heights, the results are diametrically opposed to what you
-would expect because now the behavior of the print head and extruded plastic is no longer
-approximated by absolute nozzle position and a laser beam like filament deposition but is better
-viewed as an elastic rope falling down from a pendulum. Final resting place of the filament
-depends on extrusion delay, time taken by filament to reach from the nozzle to previous layer
-and actual nozzle movement. A small change in filament "actual" deposition time (like changing
-the retraction length or speed) can disproportionately affect where the filament is deposited
-and lead to a surprising change in quality without obvious reasons.
+Sometimes, at higher speeds or greater layer heights, the results are diametrically opposed to
+what you would expect because now the behavior of the print head and extruded plastic is no
+longer approximated by absolute nozzle position and a laser beam like filament deposition but is
+better viewed as an elastic rope falling down from a pendulum. Final resting place of the
+filament depends on extrusion delay, time taken by filament to reach from the nozzle to previous
+layer and actual nozzle movement. A small change in filament "actual" deposition time (like
+changing the retraction length or speed) can disproportionately affect where the filament is
+deposited and lead to a surprising change in quality without obvious reasons.
 
 Since the effect of changes to settings is not intuitive, it takes a long time to develop a
 decent model of the printer's behaviour through trial and error before you can intelligently
@@ -116,13 +117,14 @@ dynamic printer model as much as possible and allow use of relative visual inspe
 results to select the models with the best parameter value.
 
 Each set of calibration procedures it to isolate as much as possible each parameter of the
-printer so that its optimum value could be visually determined from the printed results.
+printer so that its optimum value could be **visually** determined from the printed results.
 Important part of each procedure is to reduce the print time to seconds rather than minutes so
-that this procedure can be iterated quickly.
+that this procedure can be iterated quickly to home in on an optimal parameter value.
 
 When a single parameter cannot be accurately represented by a single value then the calibration
 procedure should be performed under various conditions and optimized for a range of another
-parameter on which it depends.
+parameter on which it depends. The value of this parameter can be interpolated based on current
+printing conditions without needing user intervention.
 
 The assisted calibration procedure would go a long way to help optimize the printer results for
 someone with less experience by presenting the user with pictures to help them choose what
@@ -130,13 +132,16 @@ results they are actually getting.
 
 The goal is to allow calibration for a completely new filament to be accomplished in about an
 hour with guaranteed optimized results, usable across the full range of printer capabilities and
-a known valid range of print parameters. The latter is needed to detect when a particular print
-model is outside a calibrated range, necessitating more calibration or change of some print
-parameters to bring the model into a calibrated range.
+a known valid range of print parameters. The latter would allow:
+
+1. To detect when a particular print model is outside a calibrated range and informing the user
+   of that fact.
+2. Allow for a smaller calibration range and only calibrating over a greater range as
+   necessitated by a subsequent model about to be printed.
 
 From my experience this would be a factor of 8 or 10 improvement over the time it takes now to
-calibrate a filament for printing. Additionally, there is no certainty as to optimization level
-of the result or ability to duplicate it on a dissimilar 3D model.
+calibrate a filament for printing. Give certainty as to optimization level of the result and
+ability to use these settings on dissimilar 3D models.
 
 ### Allow Experimentation
 
@@ -151,7 +156,7 @@ generate the G-Code segment in question.
 * Bridging approaches which will improve the quality of unsupported areas of the print model
 * Improved support structure generation to reduce amount of support material and reduce printing
   time.
-* Filament temperature model to better control when it is possible to deposit the next layer. 
+* Filament temperature model to better control when it is possible to deposit the next layer.
 
 The idea for the plugin is to allow analysis and intelligent modification of the G-Code so that
 intelligent modification of the G-Code can be done while preserving the 3D model that the
@@ -192,7 +197,7 @@ acceleration low enough to eliminate this overshoot and vibration effectively re
 printer speed to about 40 mm/s, making print times unnecessarily long.
 
 One improvement is to use non-constant acceleration and deceleration to eliminate overshoot and
-accompanying oscillation.
+accompanying ringing.
 
 If you drive a car then you probably do this automatically when breaking. You don't keep the
 deceleration constant because that would cause excessive breaking distance. Instead you
@@ -205,17 +210,41 @@ nozzle to behave as a critically damped oscillator, maximizing acceleration and 
 overshoots and oscillations about the direction of motion.
 
 Some people have implemented S-curve acceleration in firmware to improve the smoothness of
-motion at high speeds or proper jerk control (third derivative of position). This should be done
-in the printer firmware but for ease of experimentation this could be done through G-Code and
-once validated, implemented in the printer firmware.
+motion at high speeds or proper jerk control (third derivative of distance). This should be done
+in the printer firmware but for ease of experimentation this could be done through G-Code
+control and once validated, implemented in the printer firmware.
 
-Consistency of extruded plastic has drastic effect on quality of printed results. The extruder
-feed rate should be adjusted to reflect the real nozzle velocity and extrusion behavior. This
-will result in a more uniform filament deposition and improve the printed results.
+Consistency of extruded plastic has a drastic effect on quality of printed results. Currently,
+extrusion control uses linear velocity model and adjusts the extrusion speed accordingly. The
+real movement of the nozzle is does not follow this linear velocity model and causes irregular
+filament deposition unless acceleration is reduced to levels where the linear model is
+sufficiently accurate.
 
-Although the effort to create the 3D printer model and calibration procedures may be
-significant, it will allow to print at speeds of 100, 120 or even 150 mm/s while maintaining
-print quality. 
+The extruder feed rate should be adjusted to reflect the real nozzle velocity and extrusion
+behavior to result in filament deposition that approaches "ideal model". The improvement in
+print quality would be significant.
+
+Special consideration should be given to modeling retraction and un-retraction. Extruder
+behavior will vary greatly between direct and boden configurations and also between boden
+configurations depending on the length of the tube and filament type.
+
+Retraction calibration should be able to determine if there is a delay between stopping
+extrusion of plastic from the nozzle and the time retraction of the filament is started in the
+extruder. This delay should be used to start the retraction operation in advance of where
+extruded filament retraction is needed. Slicers have a "coast distance" setting which does not
+address this delay and without assisted calibration is impossible to determine.
+
+Calibration procedures for retraction should allow to **visually** select the transition form
+insufficient retraction to optimum to excess retraction. This calibration should be performed
+for a range of extrusion speeds to ensure that if it is affected by extrusion speed then
+optimization will take the speed into account.
+
+Once retraction has been optimized, un-retraction should similarly be calibrated to ensure the
+nozzle is returned to the "just about to extrude" condition.
+
+Although the effort to create accurate movement, extrusion models and calibration procedures may
+be significant, it will allow to print at speeds of 100, 120 or even 150 mm/s while maintaining
+print quality.
 
 I feel the effort is worth the pain if it results in getting a quality print in under an hour
 rather than three or more hours.
@@ -295,8 +324,6 @@ If the G-Code is generated keeping in mind how the extruded filament cools off a
 layer is solid enough to accept extrusion of the next layer, much of hand tweaking will become
 unnecessary since the program will be able to optimize extrusion to allow for sufficient cooling
 of previous layers, or inserting pauses to allow for such cooling.
-
-
 
 [RepRap wiki G-code page]: http://reprap.org/wiki/G-code
 
