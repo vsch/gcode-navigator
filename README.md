@@ -116,10 +116,10 @@ Each calibration procedure should be as short as possible, isolate individual pa
 dynamic printer model as much as possible and allow use of relative **visual** inspection of the
 results to select the models with the best parameter value.
 
-Each set of calibration procedures it to isolate as much as possible each parameter of the
-printer so that its optimum value could be **visually** determined from the printed results.
-Important part of each procedure is to reduce the print time to seconds rather than minutes so
-that this procedure can be iterated quickly to home in on an optimal parameter value.
+Each set of calibration procedures should isolate as much as possible each parameter of the
+printer so that its optimum value could be **visually** determined from a simple printed
+results. An important part of each procedure is to reduce the print time to seconds rather than
+minutes so that this procedure can be iterated quickly to an optimal parameter value.
 
 When a single parameter cannot be accurately represented by a single value then the calibration
 procedure should be performed under various conditions and optimized for a range of another
