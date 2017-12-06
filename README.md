@@ -48,8 +48,8 @@ without much "intelligence" of varying these settings automatically.
 Effectively, each 3D model needs to be tweaked for its optimum print parameters for each type of
 filament that is used.
 
-All this is greatly exaggerated if you are not happy to print at 40 or 60 mm/sec and want to get
-good quality prints at 100 mm/sec or higher. At this speed the slicer will not be of much help
+All this is greatly exaggerated if you are not happy to print at 40 or 60 mm/s and want to get
+good quality prints at 100 mm/s or higher. At this speed the slicer will not be of much help
 and neither will be the printer firmware because the real behavior of the printer and "modeled"
 parameters are completely out of sync.
 
